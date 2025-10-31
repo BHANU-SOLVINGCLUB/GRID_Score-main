@@ -1,0 +1,154 @@
+api.ts:24 [FeastExpress API] /api/dishes/tiffins/breakfast isMobile: false
+api.ts:24 [FeastExpress API] /api/dish-types/breakfast isMobile: false
+46CategoryPage.tsx:300 Warning: Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render.
+    at CategoryPage (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/src/pages/CategoryPage.tsx:184:22)
+    at Route (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=70b35c2f:323:16)
+    at Switch (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=70b35c2f:379:17)
+    at Router (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/src/App.tsx?v=ljAnFKdJ8QLtLx7DeQpkM:40:3)
+    at QueryClientProvider (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=70b35c2f:2805:3)
+    at App
+printWarning @ chunk-WERSD76P.js?v=70b35c2f:521
+error @ chunk-WERSD76P.js?v=70b35c2f:505
+checkForNestedUpdates @ chunk-WERSD76P.js?v=70b35c2f:19665
+scheduleUpdateOnFiber @ chunk-WERSD76P.js?v=70b35c2f:18533
+dispatchSetState @ chunk-WERSD76P.js?v=70b35c2f:12403
+(anonymous) @ CategoryPage.tsx:300
+commitHookEffectListMount @ chunk-WERSD76P.js?v=70b35c2f:16915
+commitPassiveMountOnFiber @ chunk-WERSD76P.js?v=70b35c2f:18156
+commitPassiveMountEffects_complete @ chunk-WERSD76P.js?v=70b35c2f:18129
+commitPassiveMountEffects_begin @ chunk-WERSD76P.js?v=70b35c2f:18119
+commitPassiveMountEffects @ chunk-WERSD76P.js?v=70b35c2f:18109
+flushPassiveEffectsImpl @ chunk-WERSD76P.js?v=70b35c2f:19490
+flushPassiveEffects @ chunk-WERSD76P.js?v=70b35c2f:19447
+(anonymous) @ chunk-WERSD76P.js?v=70b35c2f:19328
+workLoop @ chunk-WERSD76P.js?v=70b35c2f:197
+flushWork @ chunk-WERSD76P.js?v=70b35c2f:176
+performWorkUntilDeadline @ chunk-WERSD76P.js?v=70b35c2f:384Understand this error
+queryClient.ts:40 [API Response] /api/dish-types/breakfast Status: 200 OK: true
+queryClient.ts:50 [API Data] /api/dish-types/breakfast Dishes: 9 Sample: ["Bread","EggPlate"]
+CategoryPage.tsx:300 Warning: Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render.
+    at CategoryPage (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/src/pages/CategoryPage.tsx:184:22)
+    at Route (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=70b35c2f:323:16)
+    at Switch (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=70b35c2f:379:17)
+    at Router (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/src/App.tsx?v=ljAnFKdJ8QLtLx7DeQpkM:40:3)
+    at QueryClientProvider (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=70b35c2f:2805:3)
+    at App
+printWarning @ chunk-WERSD76P.js?v=70b35c2f:521
+error @ chunk-WERSD76P.js?v=70b35c2f:505
+checkForNestedUpdates @ chunk-WERSD76P.js?v=70b35c2f:19665
+scheduleUpdateOnFiber @ chunk-WERSD76P.js?v=70b35c2f:18533
+dispatchSetState @ chunk-WERSD76P.js?v=70b35c2f:12403
+(anonymous) @ CategoryPage.tsx:300
+commitHookEffectListMount @ chunk-WERSD76P.js?v=70b35c2f:16915
+commitPassiveMountOnFiber @ chunk-WERSD76P.js?v=70b35c2f:18156
+commitPassiveMountEffects_complete @ chunk-WERSD76P.js?v=70b35c2f:18129
+commitPassiveMountEffects_begin @ chunk-WERSD76P.js?v=70b35c2f:18119
+commitPassiveMountEffects @ chunk-WERSD76P.js?v=70b35c2f:18109
+flushPassiveEffectsImpl @ chunk-WERSD76P.js?v=70b35c2f:19490
+flushPassiveEffects @ chunk-WERSD76P.js?v=70b35c2f:19447
+(anonymous) @ chunk-WERSD76P.js?v=70b35c2f:19328
+workLoop @ chunk-WERSD76P.js?v=70b35c2f:197
+flushWork @ chunk-WERSD76P.js?v=70b35c2f:176
+performWorkUntilDeadline @ chunk-WERSD76P.js?v=70b35c2f:384Understand this error
+queryClient.ts:40 [API Response] /api/dishes/tiffins/breakfast Status: 200 OK: true
+queryClient.ts:50 [API Data] /api/dishes/tiffins/breakfast Dishes: 41 Sample: [{"id":"D-0450","name":"Muffins","description":"Muffins are delightful, individual baked goods, perfect for breakfast or a snack. With a soft, moist crumb, they offer sweet options like blueberry or chocolate chip, and savory too. A versatile, comforting treat.","price":"89.00","imageUrl":"dishes/D-0450/main.png","mealType":["breakfast","snacks"],"categoryId":"breakfast","isAvailable":true,"spiceLevel":null,"dietaryType":"Egg","dishType":"SavoryBakery"},{"id":"D-0454","name":"Multigrain Bread Toast","description":"Hearty multigrain bread, perfectly toasted to a golden crisp, offers a wholesome, fiber-rich start to your day. Its nutty flavor and satisfying crunch make it a versatile base for any sweet or savory topping.","price":"40.00","imageUrl":"dishes/D-0454/main.png","mealType":["breakfast","snacks"],"categoryId":"breakfast","isAvailable":true,"spiceLevel":null,"dietaryType":"Veg","dishType":"Bread"}]
+24CategoryPage.tsx:300 Warning: Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render.
+    at CategoryPage (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/src/pages/CategoryPage.tsx:184:22)
+    at Route (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=70b35c2f:323:16)
+    at Switch (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=70b35c2f:379:17)
+    at Router (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/src/App.tsx?v=ljAnFKdJ8QLtLx7DeQpkM:40:3)
+    at QueryClientProvider (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=70b35c2f:2805:3)
+    at App
+printWarning @ chunk-WERSD76P.js?v=70b35c2f:521
+error @ chunk-WERSD76P.js?v=70b35c2f:505
+checkForNestedUpdates @ chunk-WERSD76P.js?v=70b35c2f:19665
+scheduleUpdateOnFiber @ chunk-WERSD76P.js?v=70b35c2f:18533
+dispatchSetState @ chunk-WERSD76P.js?v=70b35c2f:12403
+(anonymous) @ CategoryPage.tsx:300
+commitHookEffectListMount @ chunk-WERSD76P.js?v=70b35c2f:16915
+commitPassiveMountOnFiber @ chunk-WERSD76P.js?v=70b35c2f:18156
+commitPassiveMountEffects_complete @ chunk-WERSD76P.js?v=70b35c2f:18129
+commitPassiveMountEffects_begin @ chunk-WERSD76P.js?v=70b35c2f:18119
+commitPassiveMountEffects @ chunk-WERSD76P.js?v=70b35c2f:18109
+flushPassiveEffectsImpl @ chunk-WERSD76P.js?v=70b35c2f:19490
+flushPassiveEffects @ chunk-WERSD76P.js?v=70b35c2f:19447
+(anonymous) @ chunk-WERSD76P.js?v=70b35c2f:19328
+workLoop @ chunk-WERSD76P.js?v=70b35c2f:197
+flushWork @ chunk-WERSD76P.js?v=70b35c2f:176
+performWorkUntilDeadline @ chunk-WERSD76P.js?v=70b35c2f:384Understand this error
+api.ts:24 [FeastExpress API] /api/cart isMobile: false
+4CategoryPage.tsx:300 Warning: Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render.
+    at CategoryPage (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/src/pages/CategoryPage.tsx:184:22)
+    at Route (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=70b35c2f:323:16)
+    at Switch (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=70b35c2f:379:17)
+    at Router (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/src/App.tsx?v=ljAnFKdJ8QLtLx7DeQpkM:40:3)
+    at QueryClientProvider (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=70b35c2f:2805:3)
+    at App
+printWarning @ chunk-WERSD76P.js?v=70b35c2f:521
+error @ chunk-WERSD76P.js?v=70b35c2f:505
+checkForNestedUpdates @ chunk-WERSD76P.js?v=70b35c2f:19665
+scheduleUpdateOnFiber @ chunk-WERSD76P.js?v=70b35c2f:18533
+dispatchSetState @ chunk-WERSD76P.js?v=70b35c2f:12403
+(anonymous) @ CategoryPage.tsx:300
+commitHookEffectListMount @ chunk-WERSD76P.js?v=70b35c2f:16915
+commitPassiveMountOnFiber @ chunk-WERSD76P.js?v=70b35c2f:18156
+commitPassiveMountEffects_complete @ chunk-WERSD76P.js?v=70b35c2f:18129
+commitPassiveMountEffects_begin @ chunk-WERSD76P.js?v=70b35c2f:18119
+commitPassiveMountEffects @ chunk-WERSD76P.js?v=70b35c2f:18109
+flushPassiveEffectsImpl @ chunk-WERSD76P.js?v=70b35c2f:19490
+flushPassiveEffects @ chunk-WERSD76P.js?v=70b35c2f:19447
+(anonymous) @ chunk-WERSD76P.js?v=70b35c2f:19328
+workLoop @ chunk-WERSD76P.js?v=70b35c2f:197
+flushWork @ chunk-WERSD76P.js?v=70b35c2f:176
+performWorkUntilDeadline @ chunk-WERSD76P.js?v=70b35c2f:384Understand this error
+queryClient.ts:16  POST https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/api/cart 500 (Internal Server Error)
+apiRequest @ queryClient.ts:16
+mutationFn @ CategoryPage.tsx:324
+fn @ @tanstack_react-query.js?v=70b35c2f:1189
+run @ @tanstack_react-query.js?v=70b35c2f:494
+start @ @tanstack_react-query.js?v=70b35c2f:536
+execute @ @tanstack_react-query.js?v=70b35c2f:1225
+await in execute
+mutate @ @tanstack_react-query.js?v=70b35c2f:2630
+(anonymous) @ @tanstack_react-query.js?v=70b35c2f:3295
+handleAdd @ CategoryPage.tsx:403
+onClick @ CategoryPage.tsx:861
+callCallback2 @ chunk-WERSD76P.js?v=70b35c2f:3674
+invokeGuardedCallbackDev @ chunk-WERSD76P.js?v=70b35c2f:3699
+invokeGuardedCallback @ chunk-WERSD76P.js?v=70b35c2f:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-WERSD76P.js?v=70b35c2f:3736
+executeDispatch @ chunk-WERSD76P.js?v=70b35c2f:7014
+processDispatchQueueItemsInOrder @ chunk-WERSD76P.js?v=70b35c2f:7034
+processDispatchQueue @ chunk-WERSD76P.js?v=70b35c2f:7043
+dispatchEventsForPlugins @ chunk-WERSD76P.js?v=70b35c2f:7051
+(anonymous) @ chunk-WERSD76P.js?v=70b35c2f:7174
+batchedUpdates$1 @ chunk-WERSD76P.js?v=70b35c2f:18913
+batchedUpdates @ chunk-WERSD76P.js?v=70b35c2f:3579
+dispatchEventForPluginEventSystem @ chunk-WERSD76P.js?v=70b35c2f:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-WERSD76P.js?v=70b35c2f:5478
+dispatchEvent @ chunk-WERSD76P.js?v=70b35c2f:5472
+dispatchDiscreteEvent @ chunk-WERSD76P.js?v=70b35c2f:5449Understand this error
+70CategoryPage.tsx:300 Warning: Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render.
+    at CategoryPage (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/src/pages/CategoryPage.tsx:184:22)
+    at Route (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=70b35c2f:323:16)
+    at Switch (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=70b35c2f:379:17)
+    at Router (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/src/App.tsx?v=ljAnFKdJ8QLtLx7DeQpkM:40:3)
+    at QueryClientProvider (https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=70b35c2f:2805:3)
+    at App
+printWarning @ chunk-WERSD76P.js?v=70b35c2f:521
+error @ chunk-WERSD76P.js?v=70b35c2f:505
+checkForNestedUpdates @ chunk-WERSD76P.js?v=70b35c2f:19665
+scheduleUpdateOnFiber @ chunk-WERSD76P.js?v=70b35c2f:18533
+dispatchSetState @ chunk-WERSD76P.js?v=70b35c2f:12403
+(anonymous) @ CategoryPage.tsx:300
+commitHookEffectListMount @ chunk-WERSD76P.js?v=70b35c2f:16915
+commitPassiveMountOnFiber @ chunk-WERSD76P.js?v=70b35c2f:18156
+commitPassiveMountEffects_complete @ chunk-WERSD76P.js?v=70b35c2f:18129
+commitPassiveMountEffects_begin @ chunk-WERSD76P.js?v=70b35c2f:18119
+commitPassiveMountEffects @ chunk-WERSD76P.js?v=70b35c2f:18109
+flushPassiveEffectsImpl @ chunk-WERSD76P.js?v=70b35c2f:19490
+flushPassiveEffects @ chunk-WERSD76P.js?v=70b35c2f:19447
+(anonymous) @ chunk-WERSD76P.js?v=70b35c2f:19328
+workLoop @ chunk-WERSD76P.js?v=70b35c2f:197
+flushWork @ chunk-WERSD76P.js?v=70b35c2f:176
+performWorkUntilDeadline @ chunk-WERSD76P.js?v=70b35c2f:384Understand this error

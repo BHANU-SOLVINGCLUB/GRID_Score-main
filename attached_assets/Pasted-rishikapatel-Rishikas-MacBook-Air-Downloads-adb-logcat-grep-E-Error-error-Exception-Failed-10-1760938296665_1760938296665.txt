@@ -1,0 +1,74 @@
+rishikapatel@Rishikas-MacBook-Air Downloads % adb logcat | grep -E "Error|error|Exception|Failed"
+10-20 10:59:12.547  4745 22075 E Netd    : To use pid in case SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA is false, to remove build error (unused variable)
+10-20 10:59:19.781  4745 22114 E Netd    : To use pid in case SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA is false, to remove build error (unused variable)
+10-20 10:59:21.588 22265 22115 E LoadedApk: Exception : java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.os.Looper.isPerfLogEnable()' on a null object reference
+10-20 10:59:21.594 22531 13397 E LoadedApk: Exception : java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.os.Looper.isPerfLogEnable()' on a null object reference
+10-20 10:59:21.616 22265 22115 E LoadedApk: Exception : java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.os.Looper.isPerfLogEnable()' on a null object reference
+10-20 10:59:33.282  7539  7651 E Finsky  : kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 10000 ms
+10-20 10:59:37.111  7519  7804 E Finsky:background: [5153] Failed to add checksum for package com.google.android.projection.gearhead
+10-20 10:59:37.111  7519  7804 E Finsky:background: java.lang.NoClassDefFoundError: Failed resolution of: Landroid/content/pm/Checksum;
+10-20 10:59:37.111  7519  7804 E Finsky:background: Caused by: java.lang.ClassNotFoundException: android.content.pm.Checksum
+10-20 10:59:37.561  7539 21455 W Finsky  : [5569] VerifyApps: Couldn't open the manifest for /data/app/vmdl1757117956.tmp/base.dm. Error: java.lang.IllegalStateException: AndroidManifest entry not found
+10-20 10:59:43.321  4745 22178 E Netd    : To use pid in case SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA is false, to remove build error (unused variable)
+10-20 10:59:51.967  7519 22135 E SQLiteLog: (10) POSIX Error : 11 SQLite Error : 3850
+10-20 10:59:51.969  7519 22135 E SQLiteLog: (10) POSIX Error : 11 SQLite Error : 3850
+10-20 10:59:51.972  7519 22135 E SQLiteLog: (10) POSIX Error : 11 SQLite Error : 3850
+10-20 10:59:55.734  4898  4947 E installd: Failed to delete /data/app/vmdl1757117956.tmp: No such file or directory
+10-20 10:59:56.311  7519  7612 I Finsky:background: [5123] SCU: Failed to abandon the session for com.google.android.projection.gearhead[iid:3243] [isid:3P2q5G8zQzSPsr4Sbdv9MQ] due to 5426, msg: Optional[No open Session with Context {name=com.google.android.projection.gearhead versionCode=153653834} was found.]
+10-20 10:59:57.732 22531 20707 I Icing   : Usage reports ok 1, Failed Usage reports 0, indexed 0, rejected 0
+10-20 10:59:57.950 22531 19119 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+10-20 10:59:58.239  4745 22317 E Netd    : To use pid in case SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA is false, to remove build error (unused variable)
+10-20 10:59:58.527 22271 22271 W ExportedFlags: java.lang.NoClassDefFoundError: Failed resolution of: Landroid/os/flagging/AconfigPackage;
+10-20 10:59:59.847 22265 13179 W PhBaseOp: Phenotype API error. Event: # gjii@b1bcb45d, EventCode: COMMIT_CONFIG [CONTEXT service_id=51 ]
+10-20 10:59:59.848 22265 13179 W AsyncOperation: OperationException[Status{statusCode=Stale snapshot for com.google.android.gms.clearcut_client#com.google.android.projection.gearhead(new configuration available), resolution=null}]
+10-20 10:59:59.890 21775 21775 E GameLauncher: [(Resource.kt:18):error$default] -> [(Resource.kt:19):error] RESOURCE RESULT ERROR TYPE : NONE
+10-20 11:00:06.062 22265 22115 W PhBaseOp: Phenotype API error. Event: # gjii@1648f490, EventCode: COMMIT_CONFIG [CONTEXT service_id=51 ]
+10-20 11:00:06.065 22265 22115 W AsyncOperation: OperationException[Status{statusCode=Stale snapshot for com.google.android.gms.clearcut_client#com.google.android.projection.gearhead(new configuration available), resolution=null}]
+10-20 11:00:06.503 22265 22115 W PhBaseOp: Phenotype API error. Event: # gjii@c34ad70e, EventCode: COMMIT_CONFIG [CONTEXT service_id=51 ]
+10-20 11:00:06.504 22265 22115 W AsyncOperation: OperationException[Status{statusCode=Stale snapshot for com.google.android.gms.clearcut_client#com.google.android.projection.gearhead(new configuration available), resolution=null}]
+10-20 11:00:08.745 22265 22263 I HeterodyneSyncer: (REDACTED) Sync completed. fetchReason: %s, fetchPackageName: %s, syncErrorType: %s, individual sync errors: %s.
+10-20 11:00:10.895  5217  5447 W SemWifiTransportLayerUtils: getApplicationCategory - IOException com.google.android.projection.gearhead
+10-20 11:00:10.895  5217  5447 W System.err: java.net.SocketTimeoutException: timeout
+10-20 11:00:10.895  5217  5447 W System.err: 	at com.android.okhttp.okio.Okio$3.newTimeoutException(Okio.java:225)
+10-20 11:00:10.897  5217  5447 W System.err: Caused by: java.net.SocketTimeoutException: Read timed out
+10-20 11:00:14.239  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.mediaprovider' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:14.370  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.resolv' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:14.417  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.media' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:14.764  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.sdkext' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:14.808  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.tethering' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:15.306  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.cellbroadcast' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:15.985  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.tzdata2' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:16.021  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.permission' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:17.154  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.media.swcodec' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:17.618  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.adbd' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:17.672  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.conscrypt' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:17.889  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.neuralnetworks' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:17.938  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.ipsec' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:18.352  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.extservices' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:18.559  7539  7539 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.os.statsd' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+10-20 11:00:23.459 15148 15204 W MetricsTransporter: IOException thrown when uploading metrics
+10-20 11:00:23.459 15148 15204 W MetricsTransporter: javax.net.ssl.SSLHandshakeException: connection closed
+10-20 11:00:23.459 15148 15204 W MetricsTransporter: 	at com.android.org.conscrypt.SSLUtils.toSSLHandshakeException(SSLUtils.java:358)
+10-20 11:00:23.459 15148 15204 W MetricsTransporter: Caused by: java.io.EOFException: connection closed
+10-20 11:00:23.476 15148 15204 W MetricsTransmissionManager: Transmission failed on unexpected error, IOException, and re-try metric batch.
+10-20 11:00:24.608  4745 22481 E Netd    : To use pid in case SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA is false, to remove build error (unused variable)
+10-20 11:01:11.608 15148 15204 W MetricsTransporter: IOException thrown when uploading metrics
+10-20 11:01:11.608 15148 15204 W MetricsTransporter: javax.net.ssl.SSLHandshakeException: connection closed
+10-20 11:01:11.608 15148 15204 W MetricsTransporter: 	at com.android.org.conscrypt.SSLUtils.toSSLHandshakeException(SSLUtils.java:358)
+10-20 11:01:11.608 15148 15204 W MetricsTransporter: Caused by: java.io.EOFException: connection closed
+10-20 11:01:11.616 15148 15204 W MetricsTransmissionManager: Transmission failed on unexpected error, IOException, and re-try metric batch.
+10-20 11:01:17.818 22512 22512 E ActivityThread: Failed to find provider info for com.samsung.android.oneconnect.external
+10-20 11:01:17.849 22512 22512 E ActivityThread: Failed to find provider info for com.samsung.android.oneconnect.external
+10-20 11:01:17.865 22512 22512 I ShareLive: [SLog][main][ExternalIntentUtil] exception while disable component java.lang.IllegalArgumentException: Unknown component: ComponentInfo{com.samsung.android.oneconnect/com.samsung.android.oneconnect.external.DeviceVisibilityTile}
+10-20 11:01:17.866 22512 22512 I ShareLive: [SLog][main][ExternalIntentUtil] exception while disable component java.lang.IllegalArgumentException: Unknown component: ComponentInfo{com.samsung.android.oneconnect/com.samsung.android.oneconnect.ui.contentssharing.ContentsSharingActivity}
+10-20 11:01:17.867 22512 22512 I ShareLive: [SLog][main][ExternalIntentUtil] exception while disable component java.lang.IllegalArgumentException: Unknown component: ComponentInfo{com.samsung.android.oneconnect/com.samsung.android.oneconnect.serviceui.AcceptDialogActivity}
+10-20 11:01:17.868 22512 22512 E ActivityThread: Failed to find provider info for com.samsung.android.oneconnect.external
+10-20 11:01:18.915 22607 22676 E SEMS:Social_12.2.1.11: [BLog][RxComputationThreadPool-1][ConditionRepositoryImpl] checkLegacy error
+10-20 11:01:19.600 22700 22700 I [SC]SamsungCloudApp: time elapsed to initialize ExceptionFilterInitializer: 1
+10-20 11:01:19.846 22700 22751 W Bundle  : java.lang.ClassCastException: java.lang.Float cannot be cast to java.lang.String
+10-20 11:01:20.288 22700 22789 E [SC]FeatureManager: [E] error : Attempt to invoke virtual method 'java.lang.String java.lang.String.toUpperCase()' on a null object reference 
+10-20 11:01:20.716  4745 22821 E Netd    : To use pid in case SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA is false, to remove build error (unused variable)
+10-20 11:01:22.372 22575 22735 E [SCSDK][P][1.0.01]: [KeyStoreErrorUtil] Code : 999000132, Message : No Account
+10-20 11:01:22.395 22575 22735 E [SCSDK][P][1.0.01]: [KeyStoreErrorUtil] Code : 999000132, Message : No Account
+10-20 11:01:22.411 22575 22735 E [SCSDK][P][1.0.01]: [KeyStoreErrorUtil] Code : 999000132, Message : No Account
+

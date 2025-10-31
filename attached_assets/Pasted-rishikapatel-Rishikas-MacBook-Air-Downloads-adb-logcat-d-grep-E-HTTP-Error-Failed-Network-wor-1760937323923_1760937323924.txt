@@ -1,0 +1,52 @@
+rishikapatel@Rishikas-MacBook-Air Downloads % adb logcat -d | grep -E 'HTTP|Error|Failed|Network|workspace.connect153' | tail -50
+10-20 10:43:48.330 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:48.330 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:48.970 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:48.971 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:49.494 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:49.494 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:50.091 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:50.092 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:50.818 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:50.818 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:52.022  5597  5665 D NetworkController.SecMobileSignalController(0/2): onSignalStrengthsChanged level=4
+10-20 10:43:52.023  5597  5665 D NetworkController.SecMobileSignalController(0/2): Display signal bar by emergency only[true][true]
+10-20 10:43:52.123 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:52.123 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:53.000 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:53.000 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:53.306 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:53.306 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:53.737 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:53.737 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:54.118 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:54.118 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:54.757 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:54.757 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:55.454 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:55.454 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:55.929 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:55.929 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:56.194 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:56.194 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:56.630 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:43:56.630 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:44:13.516  3512  3512 W MTPRx   : Read Error Came so calling usbRemoved()
+10-20 10:44:14.427 25532 16984 E MtpServer: Failed to start usb driver!
+10-20 10:44:32.297 10065 10065 I Capacitor/Console: File: https://localhost/assets/index-BNpBGD8x.js - Line 48 - Msg: [FeastExpress API] https://workspace.connect153.repl.co/api/cart/guest-user [object Object]
+10-20 10:44:32.299 10065 10065 I Capacitor/Console: File: https://localhost/assets/index-BNpBGD8x.js - Line 48 - Msg: [FeastExpress API] https://workspace.connect153.repl.co/api/categories/tiffins [object Object]
+10-20 10:44:32.302 10065 10065 I Capacitor/Console: File: https://localhost/assets/index-BNpBGD8x.js - Line 48 - Msg: [FeastExpress API] https://workspace.connect153.repl.co/api/dishes/tiffins/all [object Object]
+10-20 10:44:32.307  4745  4871 E Netd    : getNetworkForDns: getNetId from enterpriseCtrl is netid 0
+10-20 10:44:33.644 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:44:33.644 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:44:34.048 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:44:34.048 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:44:34.052  4745  4871 E Netd    : getNetworkForDns: getNetId from enterpriseCtrl is netid 0
+10-20 10:44:34.061  5217  5446 I WifiConnectivityMonitor.NetworkStatsAnalyzer: pull out the line???
+10-20 10:44:44.173 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:44:44.173 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:44:54.293 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:44:54.293 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:45:04.412 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+10-20 10:45:04.413 15148 15204 I System.out: (HTTPLog)-Static: isSBSettingEnabled false
+rishikapatel@Rishikas-MacBook-Air Downloads % 

@@ -1,0 +1,91 @@
+rishikapatel@Rishikas-MacBook-Air Desktop % cd GRID_Score
+
+rishikapatel@Rishikas-MacBook-Air GRID_Score % npm install  
+
+npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+
+added 586 packages, and audited 587 packages in 5s
+
+75 packages are looking for funding
+  run `npm fund` for details
+
+8 vulnerabilities (3 low, 5 moderate)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+rishikapatel@Rishikas-MacBook-Air GRID_Score % npm run build
+
+
+> rest-express@1.0.0 build
+> vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+
+vite v5.4.20 building for production...
+transforming (3) src/main.tsxBrowserslist: browsers data (caniuse-lite) is 12 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+transforming (4) src/App.tsx
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+✓ 1801 modules transformed.
+../dist/public/index.html                                             2.44 kB │ gzip:   0.96 kB
+../dist/public/assets/image_1760599771826-0-jOvnV4.png               84.29 kB
+../dist/public/assets/image_1760599912464-D0TPb8v5.png               84.74 kB
+../dist/public/assets/image_1760605699650-CNf1yjAR.png               86.11 kB
+../dist/public/assets/image_1760599632589-CcIlnB_Q.png               87.06 kB
+../dist/public/assets/image_1760599722844-KnsYhp46.png               87.10 kB
+../dist/public/assets/image_1760605582314-BC8_UuGv.png               90.66 kB
+../dist/public/assets/image_1760599491069-DdPTn9XR.png               91.74 kB
+../dist/public/assets/image_1760606146257-BiDYmjC7.png               92.43 kB
+../dist/public/assets/image_1760599701468-CjxSog6T.png               92.74 kB
+../dist/public/assets/image_1760605766767-CJ-8GGa8.png               92.99 kB
+../dist/public/assets/image_1760599583321-D-J9TgSM.png               98.79 kB
+../dist/public/assets/image_1760605834972-CusuAP1i.png              100.87 kB
+../dist/public/assets/image_1760599659726-wZJ245RD.png              102.19 kB
+../dist/public/assets/image_1760606197813-IVUYhZnt.png              104.72 kB
+../dist/public/assets/image_1760605623134-Cj80O6qJ.png              106.27 kB
+../dist/public/assets/image_1760599797811-BAJ3wEmk.png              107.02 kB
+../dist/public/assets/image_1760605964617-BJaEACrM.png              108.35 kB
+../dist/public/assets/image_1760599744216-CtIJ3VkL.png              118.91 kB
+../dist/public/assets/image_1760605650137-r-O0l25e.png              124.49 kB
+../dist/public/assets/biryani_rice_dish_fo_000d5911-Dx7FHf-g.jpg    174.44 kB
+../dist/public/assets/indian_snacks_samosa_7d45cad7-Dxkd9HwN.jpg    178.57 kB
+../dist/public/assets/biryani_rice_dish_fo_8445bdd6-CLz-iyvp.jpg    215.76 kB
+../dist/public/assets/indian_food_platter__fb1fa3f3-B1o6MynO.jpg    270.25 kB
+../dist/public/assets/indian_food_platter__b34d03e7-CcsG25P0.jpg    274.55 kB
+../dist/public/assets/indian_food_platter__04e21eaf-C7sg-mRS.jpg    283.57 kB
+../dist/public/assets/indian_biryani_dish__65f2a773-69xPQzqr.jpg    283.81 kB
+../dist/public/assets/indian_vada_d82fc29e-DbGbO22H.jpg             285.87 kB
+../dist/public/assets/indian_biryani_dish__60e99e80-Vr8J3yp2.jpg    318.28 kB
+../dist/public/assets/indian_idli_sambar_s_c6bb3ca9-B9Lf6JrQ.jpg    329.96 kB
+../dist/public/assets/indian_thali_meal_3a645a6d-BtWQp6lC.jpg       336.06 kB
+../dist/public/assets/indian_masala_dosa_2cd2adc1-DSxfwZwZ.jpg      411.64 kB
+../dist/public/assets/image_1760606063772-EyAo1CXI.png            1,564.50 kB
+../dist/public/assets/image_1760606109904-ByEofiJp.png            1,575.70 kB
+../dist/public/assets/image_1760605456545-DD1atlHX.png            3,537.19 kB
+../dist/public/assets/index-D8iBLNCx.css                            112.68 kB │ gzip:  17.22 kB
+../dist/public/assets/web-CAwMpQF-.js                                 0.76 kB │ gzip:   0.36 kB
+../dist/public/assets/index-B009BRF_.js                             547.89 kB │ gzip: 163.28 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1.35s
+
+  dist/index.js  15.2kb
+
+⚡ Done in 6ms
+rishikapatel@Rishikas-MacBook-Air GRID_Score % npx cap add ios
+
+[error] Could not find the ios platform.
+        You must install it in your project first, e.g. w/ npm install @capacitor/ios
+rishikapatel@Rishikas-MacBook-Air GRID_Score % npx cap open ios
+
+[error] ios platform has not been added yet.
+        See the docs for adding the ios platform: https://capacitorjs.com/docs/ios#adding-the-ios-platform
+rishikapatel@Rishikas-MacBook-Air GRID_Score % 

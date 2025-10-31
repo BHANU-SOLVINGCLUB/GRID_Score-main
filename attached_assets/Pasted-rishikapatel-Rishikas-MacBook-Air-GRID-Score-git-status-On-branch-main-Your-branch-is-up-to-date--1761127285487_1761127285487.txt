@@ -1,0 +1,44 @@
+rishikapatel@Rishikas-MacBook-Air GRID_Score % git status
+
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   package-lock.json
+	modified:   package.json
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	ios/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+rishikapatel@Rishikas-MacBook-Air GRID_Score % git pull origin main
+
+From https://github.com/Relai-World/GRID_Score
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+rishikapatel@Rishikas-MacBook-Air GRID_Score % head -20 client/src/pages/CategoryPage.tsx
+
+import { useRoute, useLocation } from "wouter";
+import { ChevronDown, Plus, Minus, Leaf, Drumstick, SlidersHorizontal, ArrowUpDown, X, Sparkles, ArrowLeft, LayoutGrid, Circle, Egg } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerClose } from "@/components/ui/drawer";
+import { Slider } from "@/components/ui/slider";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import AppHeader from "@/components/AppHeader";
+import BottomNav from "@/components/BottomNav";
+import CartDrawer from "@/components/CartDrawer";
+import FloatingCartButton from "@/components/FloatingCartButton";
+import { useState, useEffect } from "react";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { apiRequest, queryClient } from "@/lib/queryClient";
+import { cn } from "@/lib/utils";
+import { getSupabaseImageUrl, getCategoryImageUrl } from "@/lib/supabase";
+rishikapatel@Rishikas-MacBook-Air GRID_Score % 

@@ -1,0 +1,22 @@
+rishikapatel@Rishikas-MacBook-Air Downloads % cd ~/Downloads && unzip -o "app-debug (7).zip" && adb devices && adb install -r app-debug.apk
+Archive:  app-debug (7).zip
+  inflating: app-debug.apk           
+List of devices attached
+RZ8NA15ZKWP	device
+
+Performing Streamed Install
+Success
+rishikapatel@Rishikas-MacBook-Air Downloads % adb logcat -c && adb logcat | grep "FeastExpress API"
+10-20 10:59:21.573 15875 15875 I Capacitor/Console: File: https://localhost/assets/index-BTmPBRZW.js - Line 48 - Msg: [FeastExpress API] https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/api/cart/guest-user [object Object]
+10-20 10:59:24.468 15875 15875 I Capacitor/Console: File: https://localhost/assets/index-BTmPBRZW.js - Line 48 - Msg: [FeastExpress API] https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/api/cart/guest-user [object Object]
+10-20 10:59:24.471 15875 15875 I Capacitor/Console: File: https://localhost/assets/index-BTmPBRZW.js - Line 48 - Msg: [FeastExpress API] https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/api/categories/tiffins [object Object]
+10-20 10:59:24.473 15875 15875 I Capacitor/Console: File: https://localhost/assets/index-BTmPBRZW.js - Line 48 - Msg: [FeastExpress API] https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/api/dishes/tiffins/all [object Object]
+10-20 10:59:33.825 15875 15875 I Capacitor/Console: File: https://localhost/assets/index-BTmPBRZW.js - Line 48 - Msg: [FeastExpress API] https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/api/cart/guest-user [object Object]
+10-20 10:59:35.008 15875 15875 I Capacitor/Console: File: https://localhost/assets/index-BTmPBRZW.js - Line 48 - Msg: [FeastExpress API] https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/api/cart/guest-user [object Object]
+10-20 10:59:35.011 15875 15875 I Capacitor/Console: File: https://localhost/assets/index-BTmPBRZW.js - Line 48 - Msg: [FeastExpress API] https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/api/categories/tiffins [object Object]
+10-20 10:59:35.012 15875 15875 I Capacitor/Console: File: https://localhost/assets/index-BTmPBRZW.js - Line 48 - Msg: [FeastExpress API] https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/api/dishes/tiffins/all [object Object]
+10-20 10:59:36.537 15875 15875 I Capacitor/Console: File: https://localhost/assets/index-BTmPBRZW.js - Line 48 - Msg: [FeastExpress API] https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/api/cart/guest-user [object Object]
+10-20 10:59:37.125 15875 15875 I Capacitor/Console: File: https://localhost/assets/index-BTmPBRZW.js - Line 48 - Msg: [FeastExpress API] https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/api/cart/guest-user [object Object]
+10-20 10:59:37.127 15875 15875 I Capacitor/Console: File: https://localhost/assets/index-BTmPBRZW.js - Line 48 - Msg: [FeastExpress API] https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/api/categories/tiffins [object Object]
+10-20 10:59:37.129 15875 15875 I Capacitor/Console: File: https://localhost/assets/index-BTmPBRZW.js - Line 48 - Msg: [FeastExpress API] https://99a627e7-7ee1-49f0-8c3b-7a1d36f50c0c-00-2u45dvsscvn7n.worf.replit.dev/api/dishes/tiffins/all [object Object]
+

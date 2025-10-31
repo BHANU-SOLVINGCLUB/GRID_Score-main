@@ -1,0 +1,29 @@
+rishikapatel@Rishikas-MacBook-Air Downloads % adb logcat -c && adb logcat | grep -E "Capacitor|workspace.connect153|localhost|API Config"
+10-20 10:22:00.512  9055  9055 D Capacitor: Starting BridgeActivity
+10-20 10:22:00.546  9055  9055 D Capacitor: Registering plugin instance: CapacitorCookies
+10-20 10:22:00.553  9055  9055 D Capacitor: Registering plugin instance: WebView
+10-20 10:22:00.557  9055  9055 D Capacitor: Registering plugin instance: CapacitorHttp
+10-20 10:22:00.575  9055  9055 W Capacitor: Unable to read file at path public/plugins
+10-20 10:22:00.582  9055  9055 D Capacitor: Loading app at https://localhost
+10-20 10:22:00.667  9055  9055 D Capacitor: App started
+10-20 10:22:00.671  9055  9055 D Capacitor: App resumed
+10-20 10:22:00.706  9055  9973 D Capacitor: Handling local request: https://localhost/
+10-20 10:22:00.942  9055 10051 D Capacitor: Handling local request: https://localhost/assets/index-Dk1KRTrv.js
+10-20 10:22:00.945  9055  9977 D Capacitor: Handling local request: https://localhost/assets/index-D8iBLNCx.css
+10-20 10:22:02.259  9055  9055 I Capacitor/Console: File: https://localhost/assets/index-Dk1KRTrv.js - Line 48 - Msg: [API Config] [object Object]
+10-20 10:22:02.337  9055  9969 D Capacitor: Handling local request: https://localhost/assets/indian_snacks_samosa_7d45cad7-Dxkd9HwN.jpg
+10-20 10:22:02.340  9055  9968 D Capacitor: Handling local request: https://localhost/assets/indian_masala_dosa_2cd2adc1-DSxfwZwZ.jpg
+10-20 10:22:02.340  9055  9973 D Capacitor: Handling local request: https://localhost/assets/indian_biryani_dish__60e99e80-Vr8J3yp2.jpg
+10-20 10:22:02.366  9055  9968 D Capacitor: Handling local request: https://localhost/favicon.ico
+10-20 10:22:02.371  9055  9968 D Capacitor: Handling local request: https://localhost/favicon.svg
+10-20 10:22:02.372  9055  9968 E Capacitor: Unable to open asset URL: https://localhost/favicon.svg
+10-20 10:22:02.374  9055  9968 E Capacitor: Unable to open asset URL: https://localhost/favicon.svg
+10-20 10:22:02.375  9055  9968 E Capacitor: Unable to open asset URL: https://localhost/favicon.svg
+10-20 10:22:02.376  9055  9968 E Capacitor: Unable to open asset URL: https://localhost/favicon.svg
+10-20 10:22:09.035  9055  9055 I Capacitor/Console: File: https://localhost/assets/index-Dk1KRTrv.js - Line 48 - Msg: [API Config] [object Object]
+10-20 10:22:09.036  9055  9055 I Capacitor/Console: File: https://localhost/assets/index-Dk1KRTrv.js - Line 48 - Msg: [API Config] [object Object]
+10-20 10:22:09.043  9055  9969 D Capacitor: Handling local request: https://localhost/assets/indian_idli_sambar_s_c6bb3ca9-B9Lf6JrQ.jpg
+10-20 10:22:49.022  9055  9055 I Capacitor/Console: File: https://localhost/assets/index-Dk1KRTrv.js - Line 48 - Msg: [API Config] [object Object]
+10-20 10:22:51.615  9055  9055 I Capacitor/Console: File: https://localhost/assets/index-Dk1KRTrv.js - Line 48 - Msg: [API Config] [object Object]
+10-20 10:22:51.617  9055  9055 I Capacitor/Console: File: https://localhost/assets/index-Dk1KRTrv.js - Line 48 - Msg: [API Config] [object Object]
+

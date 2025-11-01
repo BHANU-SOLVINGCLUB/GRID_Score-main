@@ -1,12 +1,16 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { db } from "./db";
+import { supabase } from "./supabase-rest";
 import { categories, dishes, cartItems, users, addOns, otpVerifications, orders, orderItems, addresses } from "@shared/schema";
 import { eq, and, sql, gt } from "drizzle-orm";
 import { smsService } from "./sms";
 import { z } from "zod";
 import Stripe from "stripe";
 import "./types/session";
+
+// Check if using REST API
+const useRestAPI = !!(process.env.SUPABASE_URL && (process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_KEY));
 
 // Initialize Stripe (only if keys are available)
 let stripe: Stripe | null = null;
@@ -224,32 +228,68 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { mealType } = req.params;
       
-      // Map friendly meal type names to database values
-      const mealTypeMap: Record<string, string> = {
-        'tiffins': 'breakfast',  // Tiffins maps to breakfast
-        'snacks': 'snacks',
-        'lunch-dinner': 'lunch-dinner',
-        'breakfast': 'breakfast'
-      };
-      
-      const dbMealType = mealTypeMap[mealType] || mealType;
-      
-      // Get distinct category_ids where dishes have the specified meal_type
-      const result = await db
-        .selectDistinct({ categoryId: dishes.categoryId })
-        .from(dishes)
-        .where(sql`${dishes.mealType} @> ARRAY[${sql.raw(`'${dbMealType}'`)}]::text[]`);
-      
-      // Return formatted category objects with basic info
-      const formattedCategories = result.map((row, index) => ({
-        id: row.categoryId || 'unknown',
-        name: formatCategoryName(row.categoryId || 'unknown'),
-        mealType: dbMealType,
-        displayOrder: index,
-        imageUrl: `/images/categories/${row.categoryId}.jpg`
-      }));
-      
-      res.json(formattedCategories);
+      if (useRestAPI) {
+        // Use Supabase REST API - get categories filtered by meal_type
+        // Map friendly meal type names to database values
+        const mealTypeMap: Record<string, string> = {
+          'tiffins': 'breakfast',
+          'snacks': 'snacks',
+          'lunch-dinner': 'lunch-dinner',
+          'breakfast': 'breakfast'
+        };
+        
+        const dbMealType = mealTypeMap[mealType] || mealType;
+        
+        // Query Supabase REST API with filter: meal_type = dbMealType
+        const categories = await supabase.select('categories', {
+          select: '*',
+          filter: { 'meal_type': `eq.${dbMealType}` },
+          order: 'display_order.asc'
+        });
+        
+        // Format categories for frontend
+        const formatted = categories.map((cat: any) => ({
+          id: cat.id || 'unknown',
+          name: cat.name || formatCategoryName(cat.id || 'unknown'),
+          mealType: dbMealType,
+          displayOrder: cat.display_order || 0,
+          imageUrl: cat.image_url || `/images/categories/${cat.id}.jpg`
+        }));
+        
+        res.json(formatted);
+      } else {
+        // Use Drizzle ORM (direct PostgreSQL)
+        if (!db) {
+          throw new Error("Database not initialized");
+        }
+        
+        // Map friendly meal type names to database values
+        const mealTypeMap: Record<string, string> = {
+          'tiffins': 'breakfast',  // Tiffins maps to breakfast
+          'snacks': 'snacks',
+          'lunch-dinner': 'lunch-dinner',
+          'breakfast': 'breakfast'
+        };
+        
+        const dbMealType = mealTypeMap[mealType] || mealType;
+        
+        // Get distinct category_ids where dishes have the specified meal_type
+        const result = await db
+          .selectDistinct({ categoryId: dishes.categoryId })
+          .from(dishes)
+          .where(sql`${dishes.mealType} @> ARRAY[${sql.raw(`'${dbMealType}'`)}]::text[]`);
+        
+        // Return formatted category objects with basic info
+        const formattedCategories = result.map((row, index) => ({
+          id: row.categoryId || 'unknown',
+          name: formatCategoryName(row.categoryId || 'unknown'),
+          mealType: dbMealType,
+          displayOrder: index,
+          imageUrl: `/images/categories/${row.categoryId}.jpg`
+        }));
+        
+        res.json(formattedCategories);
+      }
     } catch (error) {
       console.error("Error fetching categories:", error);
       res.status(500).json({ error: "Failed to fetch categories" });
@@ -267,19 +307,42 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return;
       }
       
-      // Get distinct dish_types for the specified category
-      const result = await db
-        .selectDistinct({ dishType: dishes.dishType })
-        .from(dishes)
-        .where(eq(dishes.categoryId, categoryId))
-        .orderBy(dishes.dishType);
-      
-      // Filter out null values and return just the dish type strings
-      const dishTypes = result
-        .filter(row => row.dishType !== null)
-        .map(row => row.dishType as string);
-      
-      res.json(dishTypes);
+      if (useRestAPI) {
+        // Use Supabase REST API
+        // Get all dishes for this category, then extract unique dish_type values
+        const dishes = await supabase.select('dishes', {
+          select: 'dish_type',
+          filter: { 'category_id': `eq.${categoryId}` },
+        });
+        
+        // Extract unique non-null dish_type values
+        const dishTypes = [...new Set(
+          dishes
+            .map((d: any) => d.dish_type)
+            .filter((type: any) => type !== null && type !== undefined)
+        )];
+        
+        res.json(dishTypes.sort());
+      } else {
+        // Use Drizzle ORM (direct PostgreSQL)
+        if (!db) {
+          throw new Error("Database not initialized");
+        }
+        
+        // Get distinct dish_types for the specified category
+        const result = await db
+          .selectDistinct({ dishType: dishes.dishType })
+          .from(dishes)
+          .where(eq(dishes.categoryId, categoryId))
+          .orderBy(dishes.dishType);
+        
+        // Filter out null values and return just the dish type strings
+        const dishTypes = result
+          .filter(row => row.dishType !== null)
+          .map(row => row.dishType as string);
+        
+        res.json(dishTypes);
+      }
     } catch (error) {
       console.error("Error fetching dish types:", error);
       res.status(500).json({ error: "Failed to fetch dish types" });
@@ -294,12 +357,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Map "tiffins" to "breakfast" for production database compatibility
       const dbMealType = mealType === 'tiffins' ? 'breakfast' : mealType;
       
-      const result = await db
-        .select()
-        .from(dishes)
-        .where(sql`${dishes.mealType} @> ARRAY[${sql.raw(`'${dbMealType}'`)}]::text[]`);
-      
-      res.json(result);
+      if (useRestAPI) {
+        // Use Supabase REST API
+        // Query dishes where meal_type array contains the meal type
+        // PostgREST filter: meal_type=cs.{dbMealType} (contains)
+        const dishes = await supabase.select('dishes', {
+          select: '*',
+          filter: { 'meal_type': `cs.{${dbMealType}}` }, // Contains operator for arrays
+          order: 'name.asc'
+        });
+        
+        res.json(dishes);
+      } else {
+        // Use Drizzle ORM (direct PostgreSQL)
+        if (!db) {
+          throw new Error("Database not initialized");
+        }
+        
+        const result = await db
+          .select()
+          .from(dishes)
+          .where(sql`${dishes.mealType} @> ARRAY[${sql.raw(`'${dbMealType}'`)}]::text[]`);
+        
+        res.json(result);
+      }
     } catch (error) {
       console.error("Error fetching dishes:", error);
       res.status(500).json({ error: "Failed to fetch dishes" });
@@ -312,32 +393,57 @@ export async function registerRoutes(app: Express): Promise<Server> {
       let { mealType, categoryId } = req.params;
       
       // Map "tiffins" to "breakfast" for production database compatibility
-      // Production DB uses "breakfast" instead of "tiffins" in meal_type arrays
       const dbMealType = mealType === 'tiffins' ? 'breakfast' : mealType;
       
-      // Note: planType filtering removed as it doesn't exist in production database
-      // Check if categoryId is actually a planType (basic, gold, platinum)
-      if (['basic', 'gold', 'platinum'].includes(categoryId)) {
-        // For now, just return all dishes for this meal type since planType doesn't exist in production
-        const result = await db.select().from(dishes).where(
-          sql`${dishes.mealType} @> ARRAY[${sql.raw(`'${dbMealType}'`)}]::text[]`
-        );
-        res.json(result);
-        return;
-      }
-      
-      // Otherwise, treat as categoryId
-      const query = categoryId === 'all' 
-        ? db.select().from(dishes).where(sql`${dishes.mealType} @> ARRAY[${sql.raw(`'${dbMealType}'`)}]::text[]`)
-        : db.select().from(dishes).where(
-            and(
-              sql`${dishes.mealType} @> ARRAY[${sql.raw(`'${dbMealType}'`)}]::text[]`,
-              eq(dishes.categoryId, categoryId)
-            )
+      if (useRestAPI) {
+        // Use Supabase REST API
+        // Build filters for meal_type and category_id
+        
+        const filters: Record<string, string> = {
+          'meal_type': `cs.{${dbMealType}}` // Contains operator for arrays
+        };
+        
+        // Add category filter if not 'all' and not a plan type
+        if (categoryId !== 'all' && !['basic', 'gold', 'platinum'].includes(categoryId)) {
+          filters['category_id'] = `eq.${categoryId}`;
+        }
+        
+        const dishes = await supabase.select('dishes', {
+          select: '*',
+          filter: filters,
+          order: 'name.asc'
+        });
+        
+        res.json(dishes);
+      } else {
+        // Use Drizzle ORM (direct PostgreSQL)
+        if (!db) {
+          throw new Error("Database not initialized");
+        }
+        
+        // Check if categoryId is actually a planType (basic, gold, platinum)
+        if (['basic', 'gold', 'platinum'].includes(categoryId)) {
+          // For now, just return all dishes for this meal type since planType doesn't exist in production
+          const result = await db.select().from(dishes).where(
+            sql`${dishes.mealType} @> ARRAY[${sql.raw(`'${dbMealType}'`)}]::text[]`
           );
-      
-      const result = await query;
-      res.json(result);
+          res.json(result);
+          return;
+        }
+        
+        // Otherwise, treat as categoryId
+        const query = categoryId === 'all' 
+          ? db.select().from(dishes).where(sql`${dishes.mealType} @> ARRAY[${sql.raw(`'${dbMealType}'`)}]::text[]`)
+          : db.select().from(dishes).where(
+              and(
+                sql`${dishes.mealType} @> ARRAY[${sql.raw(`'${dbMealType}'`)}]::text[]`,
+                eq(dishes.categoryId, categoryId)
+              )
+            );
+        
+        const result = await query;
+        res.json(result);
+      }
     } catch (error) {
       console.error("Error fetching dishes:", error);
       res.status(500).json({ error: "Failed to fetch dishes" });
@@ -508,10 +614,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get all add-ons
   app.get("/api/add-ons", async (req, res) => {
     try {
-      const result = await db
-        .select()
-        .from(addOns)
-        .where(eq(addOns.isAvailable, true));
+      let result;
+      
+      if (useRestAPI) {
+        // Use Supabase REST API - get all available add-ons
+        // Filter: is_available = true
+        result = await supabase.select('add_ons', {
+          select: '*',
+          filter: { 'is_available': 'eq.true' },
+          order: 'name.asc'
+        });
+      } else {
+        // Use Drizzle ORM (direct PostgreSQL)
+        if (!db) {
+          throw new Error("Database not initialized");
+        }
+        result = await db
+          .select()
+          .from(addOns)
+          .where(eq(addOns.isAvailable, true));
+      }
       
       res.json(result);
     } catch (error) {

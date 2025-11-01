@@ -1,4 +1,5 @@
-// Supabase Storage Configuration
+// Supabase Storage URL Configuration (for image URLs only)
+// Frontend doesn't need Supabase client - only backend connects to database
 const SUPABASE_URL = 'https://leltckltotobsibixhqo.supabase.co';
 const SUPABASE_STORAGE_PATH = '/storage/v1/object/public/dish_images';
 

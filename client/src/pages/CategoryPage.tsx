@@ -264,13 +264,16 @@ export default function CategoryPage() {
   });
 
   // Fetch ALL dishes (for accurate category counts)
+  // Include dietary filter (except 'egg' which is client-side name matching)
+  const dietaryForAllDishes = dietaryMode === 'egg' ? 'all' : dietaryMode;
   const { data: allDishes = [] } = useQuery<Dish[]>({
-    queryKey: ['/api/dishes', mealType, 'all'],
+    queryKey: ['/api/dishes', mealType, 'all', dietaryForAllDishes],
   });
 
   // Fetch dishes for selected category (for display)
+  // Include dietary filter in query key so it refetches when filter changes
   const { data: dishes = [], isLoading } = useQuery<Dish[]>({
-    queryKey: ['/api/dishes', mealType, selectedCategory],
+    queryKey: ['/api/dishes', mealType, selectedCategory, dietaryMode],
   });
 
   // Fetch cart items (session-based authentication)
@@ -560,17 +563,14 @@ export default function CategoryPage() {
       }
       
       // Dietary filter
-      if (dietaryMode !== 'all') {
-        if (dietaryMode === 'veg' && dish.dietaryType !== 'Veg') {
-          return false;
-        }
-        if (dietaryMode === 'egg' && !dish.name.toLowerCase().includes('egg')) {
-          return false;
-        }
-        if (dietaryMode === 'non-veg' && dish.dietaryType !== 'Non-Veg') {
+      // Note: 'veg' and 'non-veg' are filtered at Supabase level
+      // Only 'egg' filter is done client-side (based on name matching)
+      if (dietaryMode === 'egg') {
+        if (!dish.name.toLowerCase().includes('egg')) {
           return false;
         }
       }
+      // veg and non-veg are already filtered by Supabase query
       
       // Price range filter
       const price = parseFloat(dish.price as string);

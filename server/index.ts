@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
 import cors from "cors";
 import session from "express-session";
@@ -52,7 +53,7 @@ const PgSession = connectPgSimple(session);
 app.use(
   session({
     store: new PgSession({
-      conString: process.env.DATABASE_URL,
+      conString: process.env.SUPABASE_DATABASE_URL || process.env.DATABASE_URL,
       createTableIfMissing: true,
     }),
     secret: process.env.SESSION_SECRET || 'feast-express-secret-key-change-in-production',
@@ -122,11 +123,17 @@ app.use((req, res, next) => {
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
   const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen({
+  const listenOptions: any = {
     port,
     host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
+  };
+  
+  // reusePort is not supported on Windows, only enable on Unix-like systems
+  if (process.platform !== 'win32') {
+    listenOptions.reusePort = true;
+  }
+  
+  server.listen(listenOptions, () => {
     log(`serving on port ${port}`);
   });
 })();

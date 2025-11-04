@@ -68,7 +68,8 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
-  const distPath = path.resolve(import.meta.dirname, "public");
+  // Build output is in dist/public (see vite.config.ts)
+  const distPath = path.resolve(import.meta.dirname, "..", "dist", "public");
 
   if (!fs.existsSync(distPath)) {
     throw new Error(
@@ -76,10 +77,34 @@ export function serveStatic(app: Express) {
     );
   }
 
-  app.use(express.static(distPath));
+  // Serve static files from dist/public
+  app.use(express.static(distPath, {
+    // Don't serve index.html for directory requests - let the catch-all handle it
+    index: false,
+  }));
 
-  // fall through to index.html if the file doesn't exist
-  app.use("*", (_req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"));
+  // Catch-all handler: serve index.html for all non-API routes
+  // This allows client-side routing to work when refreshing sub-URLs
+  app.get("*", (req, res, next) => {
+    // Skip if this is an API route - let Express handle 404 for non-existent API routes
+    if (req.path.startsWith("/api/")) {
+      return res.status(404).json({ error: "API endpoint not found" });
+    }
+
+    // Skip if the request is for a static asset (has a file extension)
+    // Express.static already handled these, so if we reach here, the file doesn't exist
+    const hasExtension = /\.\w+$/.test(req.path);
+    if (hasExtension) {
+      return res.status(404).send("File not found");
+    }
+
+    // Serve index.html for all other routes (SPA fallback)
+    // This handles client-side routes like /categories, /checkout, etc.
+    const indexPath = path.resolve(distPath, "index.html");
+    if (fs.existsSync(indexPath)) {
+      res.sendFile(indexPath);
+    } else {
+      res.status(404).send("index.html not found. Make sure to build the client first.");
+    }
   });
 }

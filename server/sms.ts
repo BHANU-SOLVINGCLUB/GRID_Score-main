@@ -1,6 +1,13 @@
 // SMS Service for Bulk SMS API
 // https://www.bulksms.com/ or similar bulk SMS providers
 
+import {
+  BULK_SMS_API_KEY,
+  BULK_SMS_SENDER_ID,
+  BULK_SMS_API_URL,
+  NODE_ENV,
+} from "./config";
+
 interface SMSConfig {
   apiKey: string;
   senderId: string;
@@ -12,9 +19,9 @@ export class SMSService {
 
   constructor() {
     this.config = {
-      apiKey: process.env.BULK_SMS_API_KEY || '',
-      senderId: process.env.BULK_SMS_SENDER_ID || 'CaterPlan',
-      apiUrl: process.env.BULK_SMS_API_URL || 'https://api.bulksms.com/v1/messages',
+      apiKey: BULK_SMS_API_KEY || '',
+      senderId: BULK_SMS_SENDER_ID || 'CaterPlan',
+      apiUrl: BULK_SMS_API_URL || 'https://api.bulksms.com/v1/messages',
     };
   }
 
@@ -53,7 +60,7 @@ export class SMSService {
         const error = await response.text();
         console.error('SMS API Error:', error);
         // Still return true in development to allow testing
-        if (process.env.NODE_ENV === 'development') {
+        if (NODE_ENV !== 'production') {
           console.log(`📱 SMS to ${formattedPhone}: ${message}`);
           return true;
         }
@@ -65,7 +72,7 @@ export class SMSService {
     } catch (error) {
       console.error('Error sending SMS:', error);
       // In development, log the OTP for testing
-      if (process.env.NODE_ENV === 'development') {
+      if (NODE_ENV !== 'production') {
         console.log(`📱 SMS to ${phone}: Your OTP is ${otp}`);
         return true;
       }

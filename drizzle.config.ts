@@ -1,7 +1,10 @@
 import { defineConfig } from "drizzle-kit";
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL, ensure the database is provisioned");
+// Hardcoded database URL - update the password with your actual database password
+const DATABASE_URL = 'postgresql://postgres:your-password@db.leltckltotobsibixhqo.supabase.co:5432/postgres';
+
+if (!DATABASE_URL) {
+  throw new Error("DATABASE_URL must be set in drizzle.config.ts");
 }
 
 export default defineConfig({
@@ -9,6 +12,6 @@ export default defineConfig({
   schema: "./shared/schema.ts",
   dialect: "postgresql",
   dbCredentials: {
-    url: process.env.DATABASE_URL,
+    url: DATABASE_URL,
   },
 });

@@ -1,10 +1,17 @@
-import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
 import cors from "cors";
 import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import {
+  NODE_ENV,
+  FRONTEND_URLS,
+  SUPABASE_DATABASE_URL,
+  DATABASE_URL,
+  SESSION_SECRET,
+  PORT,
+} from "./config";
 
 const app = express();
 
@@ -12,13 +19,13 @@ const app = express();
 app.use(cors({
   origin: (origin, callback) => {
     // In development: allow all origins for easier development
-    if (process.env.NODE_ENV !== 'production') {
+    if (NODE_ENV !== 'production') {
       return callback(null, true);
     }
 
     // In production: allow from configured list and Capacitor scheme
     // FRONTEND_URLS can be a comma-separated list of origins
-    const configured = (process.env.FRONTEND_URLS || process.env.FRONTEND_URL || '')
+    const configured = (FRONTEND_URLS || '')
       .split(',')
       .map((o) => o.trim())
       .filter(Boolean);
@@ -53,16 +60,16 @@ const PgSession = connectPgSimple(session);
 app.use(
   session({
     store: new PgSession({
-      conString: process.env.SUPABASE_DATABASE_URL || process.env.DATABASE_URL,
+      conString: SUPABASE_DATABASE_URL || DATABASE_URL || '',
       createTableIfMissing: true,
     }),
-    secret: process.env.SESSION_SECRET || 'feast-express-secret-key-change-in-production',
+    secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV === 'production',
+      secure: NODE_ENV === 'production',
       httpOnly: true,
-      sameSite: process.env.NODE_ENV === 'production' ? 'strict' : 'lax', // CSRF protection
+      sameSite: NODE_ENV === 'production' ? 'strict' : 'lax', // CSRF protection
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     },
   })
@@ -118,13 +125,12 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
+  // ALWAYS serve the app on the port specified in config
   // Other ports are firewalled. Default to 5000 if not specified.
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '5000', 10);
   const listenOptions: any = {
-    port,
+    port: PORT,
     host: "0.0.0.0",
   };
   
@@ -134,6 +140,6 @@ app.use((req, res, next) => {
   }
   
   server.listen(listenOptions, () => {
-    log(`serving on port ${port}`);
+    log(`serving on port ${PORT}`);
   });
 })();

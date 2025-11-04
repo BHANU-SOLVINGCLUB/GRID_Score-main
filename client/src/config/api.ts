@@ -1,8 +1,8 @@
 // API Configuration for mobile and web builds
 
 // Production backend URL for mobile access (Capacitor). Must be HTTPS.
-// Set VITE_API_URL in your env for builds; fallback is localhost for development.
-const BACKEND_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+// Hardcoded backend URL - update this with your actual backend URL
+const BACKEND_URL = 'https://your-backend.example.com'; // Replace with your actual backend URL
 
 // Detect if running in Capacitor (mobile app)
 // Proper detection: check for Capacitor object, not just hostname

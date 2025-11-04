@@ -1,36 +1,39 @@
-import "dotenv/config";
 import { Pool, neonConfig } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-serverless';
 import ws from "ws";
 import * as schema from "@shared/schema";
+import {
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY,
+  SUPABASE_DATABASE_URL,
+  DATABASE_URL,
+  SUPABASE_DB_PASSWORD,
+} from "./config";
 
 neonConfig.webSocketConstructor = ws;
 
 // Check if using Supabase REST API (preferred if credentials are available)
-const useRestAPI = !!(process.env.SUPABASE_URL && (process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_KEY));
+const useRestAPI = !!(SUPABASE_URL && SUPABASE_ANON_KEY);
 
 // Construct database URL from various sources (fallback for direct PostgreSQL)
 function getDatabaseUrl(): string | null {
   // Option 1: Direct database URL (full connection string)
-  if (process.env.SUPABASE_DATABASE_URL) {
-    return process.env.SUPABASE_DATABASE_URL;
+  if (SUPABASE_DATABASE_URL) {
+    return SUPABASE_DATABASE_URL;
   }
   
-  if (process.env.DATABASE_URL) {
-    return process.env.DATABASE_URL;
+  if (DATABASE_URL) {
+    return DATABASE_URL;
   }
   
   // Option 2: Supabase URL + Password (construct connection string)
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const dbPassword = process.env.SUPABASE_DB_PASSWORD;
-  
-  if (supabaseUrl && dbPassword) {
+  if (SUPABASE_URL && SUPABASE_DB_PASSWORD) {
     // Extract project reference from Supabase URL
     // e.g., https://leltckltotobsibixhqo.supabase.co -> leltckltotobsibixhqo
-    const urlMatch = supabaseUrl.match(/https?:\/\/([^.]+)\.supabase\.co/);
+    const urlMatch = SUPABASE_URL.match(/https?:\/\/([^.]+)\.supabase\.co/);
     if (urlMatch) {
       const projectRef = urlMatch[1];
-      return `postgresql://postgres:${encodeURIComponent(dbPassword)}@db.${projectRef}.supabase.co:5432/postgres`;
+      return `postgresql://postgres:${encodeURIComponent(SUPABASE_DB_PASSWORD)}@db.${projectRef}.supabase.co:5432/postgres`;
     }
   }
   

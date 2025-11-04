@@ -10,7 +10,8 @@ import { ArrowLeft, Loader2 } from "lucide-react";
 
 // Make sure to call `loadStripe` outside of a component's render to avoid
 // recreating the `Stripe` object on every render.
-const stripePublicKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
+// Hardcoded Stripe public key - update with your actual Stripe publishable key
+const stripePublicKey = ''; // Replace with your Stripe publishable key (starts with pk_)
 const stripePromise = stripePublicKey ? loadStripe(stripePublicKey) : null;
 
 interface PaymentFormProps {

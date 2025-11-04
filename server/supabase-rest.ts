@@ -1,4 +1,8 @@
-import "dotenv/config";
+import {
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY,
+  SUPABASE_SERVICE_ROLE_KEY,
+} from "./config";
 
 /**
  * Supabase REST API Client
@@ -12,22 +16,18 @@ interface SupabaseConfig {
 }
 
 function getSupabaseConfig(): SupabaseConfig {
-  const url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const anonKey = process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!url || !anonKey) {
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
     throw new Error(
-      "Supabase REST API credentials must be set. Provide:\n" +
+      "Supabase REST API credentials must be set in server/config.ts. Provide:\n" +
       "  - SUPABASE_URL (e.g., https://your-project.supabase.co)\n" +
-      "  - SUPABASE_ANON_KEY or SUPABASE_KEY (your anon key)\n\n" +
+      "  - SUPABASE_ANON_KEY (your anon key)\n\n" +
       "Optional:\n" +
       "  - SUPABASE_SERVICE_ROLE_KEY (for admin operations)\n\n" +
       "Get these from: Supabase Dashboard → Settings → API"
     );
   }
 
-  return { url: url.replace(/\/$/, ''), anonKey, serviceRoleKey };
+  return { url: SUPABASE_URL.replace(/\/$/, ''), anonKey: SUPABASE_ANON_KEY, serviceRoleKey: SUPABASE_SERVICE_ROLE_KEY };
 }
 
 const config = getSupabaseConfig();

@@ -8,14 +8,20 @@ import { smsService } from "./sms";
 import { z } from "zod";
 import Stripe from "stripe";
 import "./types/session";
+import {
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY,
+  STRIPE_SECRET_KEY,
+  NODE_ENV,
+} from "./config";
 
 // Check if using REST API
-const useRestAPI = !!(process.env.SUPABASE_URL && (process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_KEY));
+const useRestAPI = !!(SUPABASE_URL && SUPABASE_ANON_KEY);
 
 // Initialize Stripe (only if keys are available)
 let stripe: Stripe | null = null;
-if (process.env.STRIPE_SECRET_KEY) {
-  stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+if (STRIPE_SECRET_KEY) {
+  stripe = new Stripe(STRIPE_SECRET_KEY, {
     apiVersion: "2025-09-30.clover",
   });
 }
@@ -88,7 +94,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         success: true, 
         message: "OTP sent successfully",
         // In development, send OTP in response for testing
-        ...(process.env.NODE_ENV === 'development' && { otp })
+        ...(NODE_ENV !== 'production' && { otp })
       });
     } catch (error) {
       console.error("Error sending OTP:", error);

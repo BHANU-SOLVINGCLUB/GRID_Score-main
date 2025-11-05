@@ -1,8 +1,9 @@
 // API Configuration for mobile and web builds
 
-// Production backend URL for mobile access (Capacitor). Must be HTTPS.
-// Hardcoded backend URL - update this with your actual backend URL
-const BACKEND_URL = 'https://your-backend.example.com'; // Replace with your actual backend URL
+// Backend URL - can be set via VITE_API_URL environment variable
+// For Vercel: Set this in Project Settings → Environment Variables
+// For local dev: Create .env file with VITE_API_URL=http://localhost:5000
+const BACKEND_URL = import.meta.env.VITE_API_URL || 'https://your-backend.example.com';
 
 // Detect if running in Capacitor (mobile app)
 // Proper detection: check for Capacitor object, not just hostname
@@ -17,7 +18,7 @@ export function getApiUrl(path: string): string {
   // Determine base URL:
   // - For mobile apps (Capacitor), use full backend URL
   // - For web development (localhost in browser), use localhost:5000
-  // - For web production (other domains), use relative URLs (same origin)
+  // - For web production, use VITE_API_URL or BACKEND_URL
   const isMobile = isCapacitor();
   const isLocalDev = window.location.hostname === 'localhost' && !isMobile;
   
@@ -28,8 +29,10 @@ export function getApiUrl(path: string): string {
   } else if (isLocalDev) {
     // Web development: use localhost:5000 (same as server port)
     baseUrl = 'http://localhost:5000';
+  } else {
+    // Web production: use BACKEND_URL (from VITE_API_URL env var or hardcoded)
+    baseUrl = BACKEND_URL;
   }
-  // Web production: baseUrl stays empty (relative URLs)
   
   const fullUrl = `${baseUrl}${cleanPath}`;
   

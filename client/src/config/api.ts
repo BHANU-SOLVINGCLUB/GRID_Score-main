@@ -1,9 +1,11 @@
 // API Configuration for mobile and web builds
 
-// Backend URL - can be set via VITE_API_URL environment variable
-// For Vercel: Set this in Project Settings → Environment Variables
+// Backend URL - OPTIONAL: Only needed for auth, cart, orders, and payments
+// Most data (categories, dishes) uses Supabase directly
+// For Vercel: Set VITE_API_URL in Project Settings → Environment Variables (only if you have Express backend)
 // For local dev: Create .env file with VITE_API_URL=http://localhost:5000
-const BACKEND_URL = import.meta.env.VITE_API_URL || 'https://your-backend.example.com';
+// Leave empty/undefined if you only use Supabase direct API calls
+const BACKEND_URL = import.meta.env.VITE_API_URL || '';
 
 // Detect if running in Capacitor (mobile app)
 // Proper detection: check for Capacitor object, not just hostname
@@ -25,12 +27,14 @@ export function getApiUrl(path: string): string {
   let baseUrl = '';
   if (isMobile) {
     // Mobile: use full backend URL (must be HTTPS in production)
+    // If BACKEND_URL is empty, relative URLs will be used (may not work for mobile)
     baseUrl = BACKEND_URL;
   } else if (isLocalDev) {
     // Web development: use localhost:5000 (same as server port)
     baseUrl = 'http://localhost:5000';
   } else {
-    // Web production: use BACKEND_URL (from VITE_API_URL env var or hardcoded)
+    // Web production: use BACKEND_URL (from VITE_API_URL env var)
+    // If empty, relative URLs will be used (won't work if backend is on different domain)
     baseUrl = BACKEND_URL;
   }
   

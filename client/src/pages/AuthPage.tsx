@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
-import { sendOTP, verifyOTP, checkPhone } from "@/lib/auth-service";
+import { apiRequest } from "@/lib/queryClient";
 
 export default function AuthPage() {
   const [, setLocation] = useLocation();
@@ -21,14 +21,15 @@ export default function AuthPage() {
   // Check if phone exists
   const checkPhoneMutation = useMutation({
     mutationFn: async (phoneNumber: string) => {
-      return await checkPhone(phoneNumber);
+      const response = await apiRequest(`/api/auth/check-phone`, "POST", { phone: phoneNumber });
+      return response as unknown as { exists: boolean; username: string | null };
     },
   });
 
   // Send OTP
   const sendOtpMutation = useMutation({
     mutationFn: async (phoneNumber: string) => {
-      return await sendOTP(phoneNumber);
+      return await apiRequest(`/api/auth/send-otp`, "POST", { phone: phoneNumber });
     },
     onSuccess: (data: any) => {
       setStep("otp");
@@ -56,13 +57,20 @@ export default function AuthPage() {
   // Verify OTP
   const verifyOtpMutation = useMutation({
     mutationFn: async () => {
-      return await verifyOTP(phone, otp, isExistingUser ? undefined : username);
+      return await apiRequest(`/api/auth/verify-otp`, "POST", {
+        phone,
+        otp,
+        username: isExistingUser ? undefined : username,
+      });
     },
     onSuccess: (data: any) => {
       toast({
         title: "Welcome!",
         description: `Successfully logged in as ${data.user.username}`,
       });
+      // TODO: Save user session/token
+      localStorage.setItem("userId", data.user.id);
+      localStorage.setItem("username", data.user.username);
       setTimeout(() => {
         setLocation("/");
       }, 1000);
